@@ -16,3 +16,6 @@ TFA_UBOOT = "1"
 TFA_EXTRA_OEMAKE:append = " \
 	FIP_ALIGN=16 \
 "
+
+IMAGE_FSTYPES:append = " wic.gz wic.bmap"
+WKS_FILE = "rzg2l-sdcard.wks"
