@@ -26,3 +26,13 @@ EXTRA_IMAGEDEPENDS += " \
 	virtual/bootloader \
 	virtual/trusted-firmware-a \
 "
+
+# SD/MMC configuration:
+ROOT_PARENT_DEV = "/dev/mmcblk0"
+ROOT_PART_PREFIX = "p"
+
+# EXTLINUX configuration (needed by distroboot):
+UBOOT_EXTLINUX = "1"
+UBOOT_EXTLINUX_CONSOLE = ""
+UBOOT_EXTLINUX_ROOT = "root=${ROOT_PARENT_DEV}${ROOT_PART_PREFIX}${distro_bootpart}"
+UBOOT_EXTLINUX_FDT = "/boot/${KERNEL_DEVICETREE_BASENAME}.dtb"
