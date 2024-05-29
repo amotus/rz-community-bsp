@@ -1,6 +1,6 @@
 # rz-community-bsp
 This repository provides a basic BSP that will build a simple, usable image
-for Renesas RZ reference platforms.
+for Renesas RZ reference platforms and SolidRun RZ/G2LC EVK.
 
 It is designed to allow users to use the latest upstream open source projects
 and is provided as-is with no support from Renesas.
@@ -30,6 +30,7 @@ The following layers are only required when certain options are selected:
 | Renesas RZ/G2L | RZ/G2L SMARC Evaluation Kit | smarc-rzg2l |
 | Renesas RZ/G2LC | RZ/G2LC SMARC Evaluation Kit | smarc-rzg2lc |
 | Renesas RZ/G2UL | RZ/G2UL SMARC Evaluation Kit | smarc-rzg2ul |
+| SolidRun RZ/G2LC | RZ/G2LC HummingBoard Ripple Evaluation Kit | solidrun-rzg2lc-hummingboard |
 
 ## Provided Images
 | Image Name | Description | Key Features |
