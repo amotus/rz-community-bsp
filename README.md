@@ -4,7 +4,7 @@
 
 This [Yocto Project Compatible](https://www.yoctoproject.org/development/yocto-project-compatible-layers/)
 repository provides a basic BSP that will build a simple, usable images for
-Renesas RZ reference platforms.
+Renesas RZ reference platforms and SolidRun RZ/G2LC EVK.
 
 It is designed to allow users to use the latest upstream open source projects
 and is provided as-is with no support from Renesas.
@@ -41,6 +41,7 @@ The following layers are only required when certain options are selected:
 | Renesas RZ/G2LC | RZ/G2LC SMARC Evaluation Kit | smarc-rzg2lc |
 | Renesas RZ/G2UL | RZ/G2UL SMARC Evaluation Kit | smarc-rzg2ul |
 | Renesas RZ/V2L | RZ/V2L SMARC Evaluation Kit | smarc-rzv2l |
+| SolidRun RZ/G2LC | RZ/G2LC HummingBoard Ripple Evaluation Kit | solidrun-rzg2lc-hummingboard |
 
 ## Provided Images
 
