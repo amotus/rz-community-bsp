@@ -33,5 +33,11 @@ do_compile() {
 do_deploy() {
 	install -d ${DEPLOYDIR}
 	install -m 644 ${S}/AArch64_output/*.mot ${DEPLOYDIR}
+
+	# Create machine-specific symbolic link, to simplify scripts that need
+	# to refer to the flash writer output file, since it has a name that is
+	# encoded with the memory configuration of the board.
+	FW_MOT="$(find ${DEPLOYDIR} -name Flash_Writer_SCIF_${FLASH_WRITER_BOARD}\*.mot -printf '%f\n')"
+	ln -sf ${FW_MOT} ${DEPLOYDIR}/Flash_Writer_SCIF_${MACHINE}.mot
 }
 addtask deploy after do_compile before do_build
