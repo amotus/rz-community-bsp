@@ -31,6 +31,11 @@ EXTRA_IMAGEDEPENDS += " \
 ROOT_PARENT_DEV = "/dev/mmcblk0"
 ROOT_PART_PREFIX = "p"
 
+# U-Boot environment partition:
+# For SD, set to:   /dev/mmcblk0
+# For eMMC, set to: /dev/mmcblk0boot0
+CONFIG_ENV_PART = "/dev/mmcblk0boot0"
+
 # EXTLINUX configuration (needed by distroboot):
 UBOOT_EXTLINUX = "1"
 UBOOT_EXTLINUX_CONSOLE = ""
