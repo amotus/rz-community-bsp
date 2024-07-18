@@ -23,8 +23,8 @@
 # |   7680 | U-Boot environment (128 sectors / 64K)
 # |   8192 | first partition
 
-part bootparam --source rawcopy --sourceparams="file=bp-${MACHINE}.bin"  --ondisk mmcblk --no-table --offset 1s
-part bl2       --source rawcopy --sourceparams="file=bl2-${MACHINE}.bin" --ondisk mmcblk --no-table --offset 8s
-part u-boot    --source rawcopy --sourceparams="file=fip-${MACHINE}.bin" --ondisk mmcblk --no-table --offset 128s
+part bootparam --source rawcopy --sourceparams="file=bp-${MACHINE}.bin"  --no-table --offset 1s
+part bl2       --source rawcopy --sourceparams="file=bl2-${MACHINE}.bin" --no-table --offset 8s
+part u-boot    --source rawcopy --sourceparams="file=fip-${MACHINE}.bin" --no-table --offset 128s
 
-part /         --source rootfs --ondisk mmcblk0 --fstype=ext4 --use-uuid --align 4 --label rootfs --offset 8192s
+part /         --source rootfs --fstype=ext4 --use-uuid --align 4 --label rootfs --offset 8192s
