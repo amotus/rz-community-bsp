@@ -27,4 +27,5 @@ part bootparam --source rawcopy --sourceparams="file=bp-${MACHINE}.bin"  --no-ta
 part bl2       --source rawcopy --sourceparams="file=bl2-${MACHINE}.bin" --no-table --offset 8s
 part u-boot    --source rawcopy --sourceparams="file=fip-${MACHINE}.bin" --no-table --offset 128s
 
-part /         --source rootfs --fstype=ext4 --use-uuid --align 4 --label rootfs --offset 8192s
+part /         --source rootfs --fstype=ext4 --use-uuid --label rootfsA --active --offset 8192s
+part rootfsB   --source rootfs --fstype=ext4 --use-uuid --label rootfsB --active
