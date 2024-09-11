@@ -18,7 +18,7 @@ do_install:prepend() {
 
     # Create fw_printenv/setenv configuration file:
     echo "# PARTITION    CONFIG_ENV_OFFSET   CONFIG_ENV_SIZE" > ${WORKDIR}/fw_env.config
-    echo "${ROOT_PARENT_DEV}   ${CONFIG_ENV_OFFSET}            ${CONFIG_ENV_SIZE}" >> ${WORKDIR}/fw_env.config
+    echo "${CONFIG_ENV_PART}   ${CONFIG_ENV_OFFSET}            ${CONFIG_ENV_SIZE}" >> ${WORKDIR}/fw_env.config
 }
 
 do_install:append() {
