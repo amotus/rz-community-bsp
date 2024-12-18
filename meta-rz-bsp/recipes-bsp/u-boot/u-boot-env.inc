@@ -39,8 +39,9 @@ do_deploy:append() {
             ${UBOOT_INITIAL_ENV}
 
         if [ "${PN}-initial-env" != "u-boot-initial-env" ]; then
-            # Deploy the u-boot-initial-env symbolic link:
+            # Deploy the u-boot-initial-env symbolic links:
             ln -sf ${UBOOT_INITIAL_ENV}-${MACHINE}-${PV}-${PR} ${DEPLOYDIR}/u-boot-initial-env
+            ln -sf ${UBOOT_INITIAL_ENV}.bin ${DEPLOYDIR}/u-boot-initial-env.bin
         fi
     fi
 }
