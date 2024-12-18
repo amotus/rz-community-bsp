@@ -5,6 +5,8 @@
 # Needed because of this definition in uboot-config.bbclass:
 #     UBOOT_INITIAL_ENV ?= "${PN}-initial-env"
 
+U_BOOT_CONFIG = "u-boot-config.sh"
+
 # Obtain environment size/offset by reading U-Boot configuration file:
 uboot_read_config() {
     CONFIG_ENV_SIZE=$(cat ${B}/.config   | grep CONFIG_ENV_SIZE   | sed "s@.*=@@")
@@ -31,9 +33,17 @@ do_install:append() {
 }
 
 do_deploy:append() {
-    if [ -n "${UBOOT_INITIAL_ENV}" ]; then
-        uboot_read_config
+    uboot_read_config
 
+    # Create U-Boot variables shell script:
+    echo "#!/bin/sh" > ${DEPLOYDIR}/${U_BOOT_CONFIG}
+    echo "# Do not edit: auto-generated" >> ${DEPLOYDIR}/${U_BOOT_CONFIG}
+    echo "CONFIG_ENV_SIZE=${CONFIG_ENV_SIZE}" >> ${DEPLOYDIR}/${U_BOOT_CONFIG}
+    echo "CONFIG_ENV_OFFSET=${CONFIG_ENV_OFFSET}" >> ${DEPLOYDIR}/${U_BOOT_CONFIG}
+    echo "CONFIG_ENV_OFFSET_D=${CONFIG_ENV_OFFSET_D}" >> ${DEPLOYDIR}/${U_BOOT_CONFIG}
+    echo "CONFIG_ENV_OFFSET_K=${CONFIG_ENV_OFFSET_K}" >> ${DEPLOYDIR}/${U_BOOT_CONFIG}
+
+    if [ -n "${UBOOT_INITIAL_ENV}" ]; then
         # Create environment image that can be incorporated into the wic image.
         ${B}/tools/mkenvimage -s ${CONFIG_ENV_SIZE} -o ${DEPLOYDIR}/${UBOOT_INITIAL_ENV}.bin \
             ${UBOOT_INITIAL_ENV}
