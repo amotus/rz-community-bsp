@@ -11,8 +11,8 @@ repos:
       meta-rz-bsp:
   poky:
     url: "https://git.yoctoproject.org/git/poky"
-    # kirkstone-4.0.23
-    commit: 8e092852b63e998d990b8f8e1aa91297dec4430f
+    # kirkstone-4.0.24
+    commit: f50532593651dff82bc952288d786c55038c2c86
     layers:
       meta:
       meta-poky:
@@ -26,6 +26,6 @@ repos:
   meta-openembedded:
     url: https://git.openembedded.org/meta-openembedded
     # kirkstone HEAD
-    commit: 4ad41baed6236d499804cbfc4f174042d84fce97
+    commit: de8681b4a2a101b99dd2c48d89a7de2ccd9a961f
     layers:
       meta-oe:
