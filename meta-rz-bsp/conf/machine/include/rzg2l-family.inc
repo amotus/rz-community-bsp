@@ -15,6 +15,7 @@ TFA_INSTALL_TARGET = ""
 TFA_UBOOT = "1"
 TFA_EXTRA_OEMAKE:append = " \
 	FIP_ALIGN=16 \
+	CONFIG_PANIC_TIMEOUT=5 \
 "
 
 IMAGE_FSTYPES:append = " wic.gz wic.bmap"
