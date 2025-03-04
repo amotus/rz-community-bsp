@@ -2,7 +2,7 @@ require recipes-bsp/u-boot/u-boot-common.inc
 require recipes-bsp/u-boot/u-boot.inc
 require u-boot-env.inc
 
-DEPENDS += "python3-setuptools-native bc-native dtc-native lzop-native"
+DEPENDS += "python3-setuptools-native bc-native dtc-native lzop-native srecord-native"
 PROVIDES += "u-boot"
 
 SRC_URI = "${UBOOT_URL};protocol=https;branch=${BRANCH}"

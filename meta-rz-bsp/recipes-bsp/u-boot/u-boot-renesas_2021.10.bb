@@ -2,7 +2,8 @@ require u-boot-renesas.inc
 
 COMPATIBLE_MACHINE = "(rzg2h-family|rzg2l-family)"
 
-SRCREV = "7fcc1fdc253400f8b088ea10de30b865a32b957a"
+# Based on Renesas BSP v3.0.6-update4
+SRCREV = "455cf5a3ac6e34523136cc6a5ab55cffdfd8f57e"
 BRANCH = "v2021.10/rz"
 UBOOT_URL = "git://github.com/renesas-rz/renesas-u-boot-cip.git"
 

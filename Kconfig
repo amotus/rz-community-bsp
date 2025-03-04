@@ -7,7 +7,7 @@ config KAS_BUILD_SYSTEM
 menu "Yocto"
 choice
 	prompt "Select the Yocto version to use"
-	default YOCTO_KIRKSTONE
+	default YOCTO_SCARTHGAP
 
 	config YOCTO_KIRKSTONE
 	bool "Yocto Kirkstone"
@@ -40,7 +40,7 @@ bool
 menu "Machine"
 choice
 	prompt "Select the machine to build for"
-	default MACHINE_HIHOPE-RZG2H
+	default MACHINE_SMARC-RZG2L
 
 	config MACHINE_HIHOPE-RZG2H
 	bool "hihope-rzg2h"
@@ -52,6 +52,39 @@ choice
 	string
 	depends on MACHINE_HIHOPE-RZG2H
 	default "kas/machine/hihope-rzg2h.yml"
+
+	config MACHINE_HIHOPE-RZG2M
+	bool "hihope-rzg2m"
+	select FAMILY_G2H
+	help
+		Select the Renesas RZ/G2M reference platform from HopeRun
+
+	config KAS_INCLUDE_MACHINE_HIHOPE-RZG2M
+	string
+	depends on MACHINE_HIHOPE-RZG2M
+	default "kas/machine/hihope-rzg2m.yml"
+
+	config MACHINE_HIHOPE-RZG2N
+	bool "hihope-rzg2n"
+	select FAMILY_G2H
+	help
+		Select the Renesas RZ/G2N reference platform from HopeRun
+
+	config KAS_INCLUDE_MACHINE_HIHOPE-RZG2N
+	string
+	depends on MACHINE_HIHOPE-RZG2N
+	default "kas/machine/hihope-rzg2n.yml"
+
+	config MACHINE_EK874
+	bool "ek874"
+	select FAMILY_G2H
+	help
+		Select the Renesas RZ/G2E reference platform from SiLinux
+
+	config KAS_INCLUDE_MACHINE_EK874
+	string
+	depends on MACHINE_EK874
+	default "kas/machine/ek874.yml"
 
 	config MACHINE_SMARC-RZG2L
 	bool "smarc-rzg2l"
@@ -86,6 +119,17 @@ choice
 	depends on MACHINE_SMARC-RZG2UL
 	default "kas/machine/smarc-rzg2ul.yml"
 
+	config MACHINE_SMARC-RZV2L
+	bool "smarc-rzv2l"
+	select FAMILY_G2L
+	help
+		Select the Renesas RZ/V2L reference platform
+
+	config KAS_INCLUDE_MACHINE_SMARC-RZV2L
+	string
+	depends on MACHINE_SMARC-RZV2L
+	default "kas/machine/smarc-rzv2l.yml"
+
 endchoice
 endmenu
 
@@ -103,6 +147,18 @@ choice
 	string
 	depends on IMAGE_RENESAS_IMAGE_MINIMAL
 	default "kas/image/renesas-image-minimal.yml"
+
+	config IMAGE_RENESAS_IMAGE_DEMO
+	depends on MACHINE_SMARC-RZG2L || MACHINE_SMARC-RZG2LC
+	bool "renesas-image-demo"
+	help
+		Build a demo image including Weston/Wayland support.
+		Currently only supported on smarc-rzg2l and smarc-rzg2lc.
+
+	config KAS_INCLUDE_IMAGE_RENESAS_IMAGE_DEMO
+	string
+	depends on IMAGE_RENESAS_IMAGE_DEMO
+	default "kas/image/renesas-image-demo.yml"
 endchoice
 endmenu
 
@@ -141,6 +197,32 @@ choice
 	depends on KERNEL_CIP_6.1
 	default "kas/kernel/cip-6.1.yml"
 
+	config KERNEL_LTS_6.6
+	bool "LTS v6.6"
+	help
+		Use the latest LTS v6.6 kernel.
+
+		The meta-linux-mainline layer is used to provide the kernel
+		recipe.
+
+	config KAS_INCLUDE_KERNEL_LTS_6.6
+	string
+	depends on KERNEL_LTS_6.6
+	default "kas/kernel/lts-6.6.yml"
+
+	config KERNEL_LTS_6.12
+	bool "LTS v6.12"
+	help
+		Use the latest LTS v6.12 kernel.
+
+		The meta-linux-mainline layer is used to provide the kernel
+		recipe.
+
+	config KAS_INCLUDE_KERNEL_LTS_6.12
+	string
+	depends on KERNEL_LTS_6.12
+	default "kas/kernel/lts-6.12.yml"
+
 	config KERNEL_MAINLINE
 	bool "Mainline"
 	help
@@ -162,7 +244,7 @@ menu "Bootloaders"
 	menu "U-Boot"
 	choice
 		prompt "Select the U-Boot version to use"
-		default UBOOT_MAINLINE_2023.10 if FAMILY_G2H
+		default UBOOT_MAINLINE_2024.10 if FAMILY_G2H
 		default UBOOT_RENESAS_2021.10
 
 		config UBOOT_RENESAS_2021.10
@@ -175,23 +257,24 @@ menu "Bootloaders"
 		depends on UBOOT_RENESAS_2021.10
 		default "kas/u-boot/renesas-2021.10.yml"
 
-		config UBOOT_MAINLINE_2023.10
-		bool "Mainline v2023.10"
+		config UBOOT_MAINLINE_2024.10
+		bool "Mainline v2024.10"
 		depends on FAMILY_G2H
 		help
-			Use mainline U-Boot v2023.10
+			Use mainline U-Boot v2024.10
 
-		config KAS_INCLUDE_UBOOT_MAINLINE_2023.10
+		config KAS_INCLUDE_UBOOT_MAINLINE_2024.10
 		string
-		depends on UBOOT_MAINLINE_2023.10
-		default "kas/u-boot/mainline-2023.10.yml"
+		depends on UBOOT_MAINLINE_2024.10
+		default "kas/u-boot/mainline-2024.10.yml"
 	endchoice
 	endmenu
 
 	menu "Trusted-Firmware-A"
 	choice
 		prompt "Select the Trusted-Firmware-A version to use"
-		default TFA_MAINLINE_2.9.0
+		default TFA_MAINLINE_2.10.8 if FAMILY_G2H
+		default TFA_RENESAS_2.9.0
 
 		config TFA_RENESAS_2.9.0
 		bool "Renesas v2.9.0"
@@ -203,16 +286,16 @@ menu "Bootloaders"
 		depends on TFA_RENESAS_2.9.0
 		default "kas/trusted-firmware-a/renesas-2.9.0.yml"
 
-		config TFA_MAINLINE_2.9.0
-		bool "Mainline v2.9.0"
+		config TFA_MAINLINE_2.10.8
+		bool "Mainline v2.10.8 LTS"
 		depends on FAMILY_G2H
 		help
-			Use mainline Trusted-Firmware-A v2.9.0
+			Use mainline Trusted-Firmware-A v2.10.8 LTS
 
-		config KAS_INCLUDE_TFA_MAINLINE_2.9.0
+		config KAS_INCLUDE_TFA_MAINLINE_2.10.8
 		string
-		depends on TFA_MAINLINE_2.9.0
-		default "kas/trusted-firmware-a/mainline-2.9.0.yml"
+		depends on TFA_MAINLINE_2.10.8
+		default "kas/trusted-firmware-a/mainline-2.10.8.yml"
 	endchoice
 	endmenu
 endmenu
@@ -244,21 +327,13 @@ menu "Other"
 		Enable the debug-tweaks image feature that enabled features
 		helpfull for development (e.g. allows root logins, logins
 		without passwords (including root ones), and enables
-		post-installation logging)
+		post-installation logging).
+
+		Also include a number of packages useful for hardware debugging
+		such as can-utils and i2c-tools.
 
 	config KAS_INCLUDE_OPT_DEBUG
 	string
 	depends on OPT_DEBUG
 	default "kas/opt/debug.yml"
-
-	config OPT_GITLAB_CI_CACHE
-	bool "GitLab CI cache"
-	help
-		Change the SSTATE_DIR and DL_DIR locations so that they can
-		easily be used with GitLab CI/CD caching
-
-	config KAS_INCLUDE_OPT_GITLAB_CI_CACHE
-	string
-	depends on OPT_GITLAB_CI_CACHE
-	default "kas/opt/gitlab-ci-cache.yml"
 endmenu
