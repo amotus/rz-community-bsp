@@ -4,10 +4,10 @@ LICENSE = "BSD-3-Clause"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 COMPATIBLE_MACHINE = "(rzg2h-family|rzg2l-family)"
 
-FLASH_WRITER_URL = "git://github.com/SolidRun/rzg2_flash_writer"
+FLASH_WRITER_URL = "git://github.com/dimonoff/rzg2_flash_writer"
 
 BRANCH = "solidrun"
-SRCREV = "3fc5c70c870bd71a9898e6d1a4ef90ef9e41e8b5"
+SRCREV = "${AUTOREV}"
 PV = "1.06+git${SRCPV}"
 LIC_FILES_CHKSUM = "file://LICENSE.md;md5=1fb5dca04b27614d6d04abca6f103d8d"
 
