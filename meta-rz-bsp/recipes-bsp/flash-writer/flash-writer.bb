@@ -30,7 +30,9 @@ do_compile() {
 	# Makefile doesn't handle dependencies correctly, so always clean:
 	oe_runmake clean
 
-	oe_runmake BOARD=${FLASH_WRITER_BOARD}
+	oe_runmake \
+	    BOARD=${FLASH_WRITER_BOARD} \
+	    SERIAL_FLASH=DISABLE
 }
 
 do_deploy() {
