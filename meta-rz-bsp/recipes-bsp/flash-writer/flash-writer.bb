@@ -32,7 +32,8 @@ do_compile() {
 
 	oe_runmake \
 	    BOARD=${FLASH_WRITER_BOARD} \
-	    SERIAL_FLASH=DISABLE
+	    SERIAL_FLASH=DISABLE \
+	    DEBUG_COMMANDS=DISABLE
 }
 
 do_deploy() {
