@@ -27,6 +27,9 @@ S = "${WORKDIR}/git"
 do_compile() {
 	cd ${S}
 
+	# Makefile doesn't handle dependencies correctly, so always clean:
+	oe_runmake clean
+
 	oe_runmake BOARD=${FLASH_WRITER_BOARD}
 }
 
