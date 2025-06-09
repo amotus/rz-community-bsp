@@ -15,9 +15,6 @@ PACKAGES =+ "${PN}-bcm43439"
 LICENSE:${PN}-bcm43439 = "Firmware-broadcom_bcm43xx"
 RDEPENDS:${PN}-bcm43439 += "${PN}-broadcom-license"
 
-FILES:${PN}-bcm43455 += "${nonarch_base_libdir}/firmware/brcm/*43455*"
 FILES:${PN}-bcm43439 += " \
     ${nonarch_base_libdir}/firmware/brcm/*43439* \
-    ${nonarch_base_libdir}/firmware/cypress/*43439* \
 "
-FILES:${PN}-bcm-0bb4-0306 += "${nonarch_base_libdir}/firmware/brcm/BCM.hcd"
