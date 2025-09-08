@@ -5,7 +5,7 @@ SOC_FAMILY = "rzg2l-family"
 
 # U-Boot configuration
 PREFERRED_PROVIDER_virtual/bootloader ?= "u-boot-renesas"
-PREFERRED_VERSION_u-boot-renesas ?= "2021.10%"
+PREFERRED_VERSION_u-boot-renesas ?= "2025.07%"
 
 # TF-A configuration
 PREFERRED_PROVIDER_virtual/trusted-firmware-a ?= "trusted-firmware-a-renesas"
