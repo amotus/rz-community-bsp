@@ -9,8 +9,8 @@ U_BOOT_CONFIG = "u-boot-config.sh"
 
 # Obtain environment size/offset by reading U-Boot configuration file:
 uboot_read_config() {
-    CONFIG_ENV_SIZE=$(cat ${B}/.config   | grep CONFIG_ENV_SIZE   | sed "s@.*=@@")
-    CONFIG_ENV_OFFSET=$(cat ${B}/.config | grep CONFIG_ENV_OFFSET | sed "s@.*=@@")
+    CONFIG_ENV_SIZE=$(cat ${B}/.config   | grep "CONFIG_ENV_SIZE="   | sed "s@.*=@@")
+    CONFIG_ENV_OFFSET=$(cat ${B}/.config | grep "CONFIG_ENV_OFFSET=" | sed "s@.*=@@")
     CONFIG_ENV_OFFSET_D=$(printf "%d\n" ${CONFIG_ENV_OFFSET})
     CONFIG_ENV_OFFSET_K=$(echo ${CONFIG_ENV_OFFSET_D} | awk '{ print $1 / 1024 }')
 }
