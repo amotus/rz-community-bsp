@@ -8,7 +8,7 @@ FLASH_WRITER_URL = "git://github.com/amotus/rzg2_flash_writer"
 
 BRANCH = "solidrun"
 SRCREV = "${AUTOREV}"
-PV = "1.06+git${SRCPV}"
+PV = "1.07+git${SRCPV}"
 LIC_FILES_CHKSUM = "file://LICENSE.md;md5=1fb5dca04b27614d6d04abca6f103d8d"
 
 BRANCH:rzg2h-family = "master"
