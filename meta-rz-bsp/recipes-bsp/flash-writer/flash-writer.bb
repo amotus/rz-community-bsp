@@ -7,7 +7,7 @@ COMPATIBLE_MACHINE = "(rzg2h-family|rzg2l-family)"
 FLASH_WRITER_URL = "git://github.com/amotus/rzg2_flash_writer"
 
 BRANCH = "solidrun"
-SRCREV = "c4b732f69f5fd10fa5d58e25568bdedc4206dd1d"
+SRCREV = "cc3236ce26c29b1bb240dc76bb359347b6939fe9"
 PV = "1.07+git${SRCPV}"
 LIC_FILES_CHKSUM = "file://LICENSE.md;md5=1fb5dca04b27614d6d04abca6f103d8d"
 
